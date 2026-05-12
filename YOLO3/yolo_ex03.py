@@ -1,11 +1,14 @@
 import cv2
 import numpy as np
 
-VideoSignal = cv2.VideoCapture('youquiz4.mp4')
+VideoSignal = cv2.VideoCapture('C:/Data/computer_vision/YOLO3/video/youquiz4.mp4')
 
-YOLO_net = cv2.dnn.readNet('yolov3.weights', 'yolov3.cfg')
+YOLO_net = cv2.dnn.readNetFromDarknet(
+    'C:/Data/computer_vision/YOLO3/yolov3.cfg',
+    'C:/Data/computer_vision/YOLO3/yolov3.weights'
+)
 classes = []
-with open('yolo.names', 'r') as f:
+with open('C:/Data/computer_vision/YOLO3/yolo.names', 'r') as f:
     classes = [line.strip() for line in f.readlines()]
 
 layer_names = YOLO_net.getLayerNames()
